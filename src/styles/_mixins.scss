@@ -1,4 +1,4 @@
-/*1200px*/
+/*1200px*/ //For responsiveness, I search the most frequently used devices sizes and I set my breakpoints
 @mixin respond-tablet-landscape{
     @media(max-width:75em){
         @content

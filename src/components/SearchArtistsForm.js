@@ -17,13 +17,13 @@ export default function SearchArtistsForm({setArtists,accessToken,accessTokenExp
                 e.preventDefault();
                 if (setArtists && accessToken){
                         if (!isTokenStillValid(accessTokenExpirationDate))
-                                return deleteToken()
-                        const {data:{artists:{items:artistsFetched,total,limit,offset}}}=await axios.get(generateSpotifySearchArtistsURL(query),{headers:{
+                                return deleteToken() //forces re-login
+                        const {data:{artists:{items:artistsFetched}}}=await axios.get(generateSpotifySearchArtistsURL(query),{headers:{
                                 Authorization:`Bearer ${accessToken}`
                         }})
                         setArtists(artistsFetched)
                 }
-                else navigate("/artists/search?q="+query)
+                else navigate("/artists/search?q="+query) //If we are at page 2 in our wireframes
         }
 
         function MagnifyingGlassIcon(){
@@ -34,7 +34,7 @@ export default function SearchArtistsForm({setArtists,accessToken,accessTokenExp
 
         async function onQueryChangeHandler({target:{value}}){
                 if (setArtists && accessToken){
-                        const {data:{artists:{items:artistsFetched,total,limit,offset}}}=await axios.get(generateSpotifySearchArtistsURL(value),{headers:{
+                        const {data:{artists:{items:artistsFetched}}}=await axios.get(generateSpotifySearchArtistsURL(value),{headers:{
                                 Authorization:`Bearer ${accessToken}`
                         }})
                         setArtists(

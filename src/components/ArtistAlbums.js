@@ -14,7 +14,7 @@ export default function ArtistAlbums({accessToken,accessTokenExpirationDate,dele
     //items[0].artists[0].name and .id
     async function fetchAlbums(){
         if (!isTokenStillValid(accessTokenExpirationDate))
-            return deleteToken()
+            return deleteToken() //forces re-login
         const {data:{items:albumsFetched,total,limit,offset}}=await axios.get(generateSpotifySearchArtistAlbumURL(artistId),{headers:{
             Authorization:`Bearer ${accessToken}`
     }})

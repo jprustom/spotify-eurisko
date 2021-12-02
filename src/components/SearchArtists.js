@@ -15,10 +15,10 @@ export default function SearchArtists({accessToken,accessTokenExpirationDate,del
     
     async function fetchArtists(){
         if (!isTokenStillValid(accessTokenExpirationDate))
-            return deleteToken() //I would use total,limit and offset for pagination
-        const {data:{artists:{items:artistsFetched,total,limit,offset}}}=await axios.get(generateSpotifySearchArtistsURL(q),{headers:{
+            return deleteToken() //forces re-login
+        const {data:{artists:{items:artistsFetched}}}=await axios.get(generateSpotifySearchArtistsURL(q),{headers:{
             Authorization:`Bearer ${accessToken}`
-    }})
+        }})
         setArtists(
             artistsFetched.map(
                 artistFetched=>(

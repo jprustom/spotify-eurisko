@@ -1,0 +1,94 @@
+@import "mixins";
+
+#ArtistAlbumsPageContainer{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    &>*{
+        margin-left:1.5rem
+    }
+    &>#ArtistName{
+        &>h1{ //Artist Name
+            font-size:3rem;
+            margin-bottom:1rem;
+        }
+        &>h4{ //Albums Label
+            margin-top:0;
+            font-size:2.4rem;
+            color:rgba(0,0,0,.6);
+            
+        }
+    }
+    
+    &>#AlbumsContainer{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items:center;
+        justify-content:space-between;
+        @include respond-phone{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        &>.Album{
+            @include respond-tablet-landscape{
+                &:last-child{
+                    margin-right: auto;
+                }
+            }
+            max-height: 50rem;
+            margin-right:5rem;
+            display: flex;
+            width: 20%;
+            flex-direction: column;
+            border:1.5px solid rgba(0,0,0,.9);
+            margin-bottom:2rem;
+            transition:all .3s;
+            @include respond-tablet-landscape{
+                width:25%
+            }
+            @include respond-phone{
+                max-height: 70rem;
+                width:85%
+            }
+            &>img{
+                width:100%;
+                height:35rem;
+                transition: filter .3s;
+                filter:grayscale(25%)
+            }
+            &>:not(img){
+                margin:.2rem 1rem
+            }
+            &>h3{ //Album name
+                font-size:2rem;
+            }
+            &>h6{
+                font-size:1.8rem;
+                color:rgba(0,0,0,.6);
+                &.ArtistsName{
+                    margin-bottom:2rem
+                }
+            }
+            &>.Preview{
+                margin:0;
+                background-color:rgba(0,0,0,.4);
+                text-align:center;
+                height: 5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration:none;
+                color:rgba(0,0,0,.7);
+                font-size:1.5rem;
+                transition: all .14s;
+                &:hover{
+                    background-color: rgba(0,0,0,.3);
+                    color:white
+                }
+            }
+        }
+    }
+}
+

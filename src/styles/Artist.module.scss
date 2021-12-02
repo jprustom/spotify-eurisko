@@ -1,0 +1,63 @@
+@import "mixins";
+
+.Artist{
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    border:1.5px solid rgba(0,0,0,.9);
+    margin-bottom:2rem;
+    cursor: pointer;
+    transition:all .3s;
+    
+    &:hover{
+        background-color: darken(white,10%);
+        &>img{
+            filter:grayscale(0)
+        }
+    }
+    &>img{
+        width:100%;
+        height:35rem;
+        transition: filter .3s;
+        filter:grayscale(25%)
+    }
+    &>:not(img){
+        margin-left:1.5rem;
+    }
+    &>h3{ //Name
+        font-size:2rem
+    }
+    &>h5{ //followers
+        font-size:1.8rem;
+        color:rgba(0,0,0,.6)
+    }
+    &>.StarsContainer{
+        display: flex;
+        flex-direction: row;
+        &>.Star{
+            position:relative;
+            overflow: hidden;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            background-color: gray;
+            overflow: hidden;
+            width:2.5rem;
+            height:2.5rem;
+            margin-bottom:1rem;
+            &>.StarColor{
+                position: absolute;
+                background-color: rgba(199, 199, 35, 0.938);
+                height:100%;
+            }
+            
+        }
+    }
+    @include respond-tablet-landscape{
+        width:25%
+    }
+    @include respond-tablet-portrait{
+        width:30%
+    }
+    @include respond-phone{
+        width:85%
+    }
+}

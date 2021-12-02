@@ -1,0 +1,53 @@
+@import "mixins";
+#SearchArtistsContainer{
+    position: relative;
+    width:50rem;
+    height:5rem;
+    margin-left:50vw;
+    margin-top:2vh;
+    transform: translateX(-50%);
+    margin-bottom:4rem;
+    &.Centered{
+        margin-top:50vh;
+        transform: translate(-50%,-50%);
+        margin-bottom: 0;
+    }
+    &>#SearchArtistsInput{
+        width: 100%;
+        height: 100%;
+        border-radius:10px;
+        border:2px solid rgba(0,0,0,.8);
+        
+        font-size:2rem;
+        padding:.2rem;
+        text-align: center;
+        transition:background-color .1s ease-out;
+        &:focus{
+            background-color: darken(white,5%);
+            +#Icon{
+                
+                cursor: pointer;
+                &:hover{
+                    fill:white
+                }
+            }
+        }
+        
+    }
+    &>#Icon{
+        position: absolute; 
+        right:2%;
+        top:50%;
+        transform: translateY(-50%) scale(1.8);
+        transition: all .3s ease;
+        @include respond-tablet-landscape{
+            transform: translateY(-50%) scale(1);
+        }
+        @include respond-phone{
+            transform: translateY(-50%) scale(.65);
+        }
+    }
+    @include respond-phone{
+        width:35rem
+    }
+}

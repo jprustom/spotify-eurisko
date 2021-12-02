@@ -1,0 +1,19 @@
+/*1200px*/
+@mixin respond-tablet-landscape{
+    @media(max-width:75em){
+        @content
+    }
+}
+/*900px*/
+@mixin respond-tablet-portrait{
+    @media(max-width:56.25em){
+        @content
+    }
+}
+/*600px*/
+@mixin respond-phone{
+    @media(max-width:37.5em){
+        @content
+    }
+}
+

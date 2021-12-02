@@ -1,0 +1,14 @@
+@import "mixins";
+
+#ArtistsContainer{
+    justify-content: space-evenly;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @include respond-phone{
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+}
